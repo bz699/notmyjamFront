@@ -13,6 +13,7 @@
   justify-content: center;
 }
 
+
 /* commun stuffs */
 .flex {
   display: flex;
@@ -26,4 +27,8 @@
 .flexColumn {
   display: flex;
   flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }

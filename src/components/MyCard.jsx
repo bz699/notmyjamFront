@@ -12,7 +12,7 @@ const MyCard = () => {
 			<div className="myCard flexrow">
 			
       	<div className="myActions flexColumn">
-					<Button variant="primary">envoyer</Button>
+					<Button variant="send">envoyer</Button>
 					<Button variant="primary">modifer</Button>
 				</div>
       

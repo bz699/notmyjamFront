@@ -25,7 +25,7 @@ const Cards = () => {
   console.log(users)
 
 	return (
-		<div className="wrapper">
+		<div className="wrapper wrap">
         {users && users.map((user) => 
           <Card user= { user } />
         )}
