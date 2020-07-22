@@ -1,8 +1,8 @@
-.cards {
-
-
+.card {
+  width: 200px;
+  height: 200px;
+  border : 1px solid #FBCB0B;
 }
-
 
 .myCard {
   min-width: 600px;
