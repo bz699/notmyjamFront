@@ -8,10 +8,16 @@
 }
 
 .wrapper {
-  width: 100vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* commun stuffs */
+.flex {
+  display: flex;
+}
+
 .flexrow {
   display: flex;
   flex-direction: row;

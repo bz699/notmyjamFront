@@ -1,11 +1,12 @@
 .card {
   width: 200px;
   height: 200px;
+  margin: 10px;
   border : 1px solid #FBCB0B;
 }
 
 .myCard {
-  min-width: 600px;
+  width: 600px;
   height: 200px;
   margin:20px 0;
   padding: 5px;
@@ -27,5 +28,14 @@
   width: 100%;
   justify-content: space-evenly;
   margin: 5px;
-  height: 40px;
+}
+
+.userName {
+  height: 30px;
+  color: red;
+}
+
+.userDiet {
+  height: 30px;
+  color: red;
 }

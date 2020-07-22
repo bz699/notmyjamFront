@@ -7,7 +7,7 @@ import "./styles/cards.css";
 
 const MyCard = () => {
 	return (
-		<div classname="wrapper">
+		<div className="wrapper">
 
 			<div className="myCard flexrow">
 			
