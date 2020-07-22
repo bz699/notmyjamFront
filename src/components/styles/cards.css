@@ -1,0 +1,31 @@
+.cards {
+
+
+}
+
+
+.myCard {
+  min-width: 600px;
+  height: 200px;
+  margin:20px 0;
+  padding: 5px;
+  border : 1px solid #FBCB0B;
+  border-radius: 10px;
+}
+
+.myActions {
+  width: 25%;
+  justify-content: space-evenly;
+}
+
+.myDetails {
+  width: 75%;
+  margin: 0 10px;
+}
+
+.cardTitle {
+  width: 100%;
+  justify-content: space-evenly;
+  margin: 5px;
+  height: 40px;
+}

@@ -1,12 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
+
+// import boostrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
+
 import Header from './components/Header';
+import MyCard from './components/MyCard';
+import Cards from './components/Cards';
 
 function App() {
   return (
-    <div className="App">
+    <div className='contain'>
       <Header />
+      <MyCard />
+      <Cards />
     </div>
   );
 }

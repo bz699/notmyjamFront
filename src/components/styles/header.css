@@ -1,5 +1,5 @@
 .header {
-  width: 100vw;
+  width: 100%;
   height: 100px;
   background-color: #FBCB0B;
   position: sticky;
@@ -9,6 +9,7 @@
 .logo {
   width: 20%;
   height: 100%;
+  margin-left: 10px;
   justify-content: center;
   align-items: baseline;
 }
