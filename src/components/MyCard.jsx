@@ -22,7 +22,7 @@ const MyCard = () => {
 			</div>
 
 
-			<div className="myCardForm">				
+			<div className="myCardForm">
 					<div className="foodDetails">Food Details</div>
 			</div>
 

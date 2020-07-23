@@ -44,7 +44,8 @@
 
 .cardTitle {
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: center;
+
   margin: 5px;
 }
 
@@ -56,4 +57,8 @@
 .userDiet {
   height: 30px;
   color: #35AC68;
+}
+
+.margin {
+  margin: 5px;
 }
