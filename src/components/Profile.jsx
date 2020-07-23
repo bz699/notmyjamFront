@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect }from 'react';
 
 import MyCard from './MyCard';
 
 const Profile = () => {
+
+  const [profile, setProfile] = useState();
+
+  useEffect(() => {
+    setProfile(JSON.parse(localStorage.getItem("signin")));
+  }, []);
+
+  console.log(profile)
+
   return (
     <div>
     <MyCard />

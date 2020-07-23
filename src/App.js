@@ -1,14 +1,15 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+import PrivateRoute from "./components/PrivateRoute";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
-import Cards from './components/Cards';
-import Profile from './components/Profile';
-import Header from './components/Header';
 import Signin from './components/Signin';
+import Header from './components/Header';
+import Profile from './components/Profile';
+import Cards from './components/Cards';
 
 function App() {
   return (
