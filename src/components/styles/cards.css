@@ -7,10 +7,9 @@
   border-radius: 10px;
 }
 
-.myCard {
+.myCardForm {
   width: 600px;
-  height: 200px;
-  margin:20px 0;
+  margin: 20px;
   padding: 5px;
   border : 1px solid #FBCB0B;
   border-radius: 10px;
@@ -19,22 +18,26 @@
 /* INSIDE MY CARD */
 
 .myActions {
-  width: 25%;
-  justify-content: space-evenly;
+  width: 600px;
+  margin: 20px;
+  justify-content: center;
 }
 
 .myDetails {
-  width: 75%;
+  width: 600px;
   margin: 0 10px;
 }
 
 .btn-send {
-  width: 100px;
+  width: 200px;
+  margin: 0 10px;
   border: 1px solid #35AC68;
 }
 
 .btn-modify {
-
+  width: 200px;
+  margin: 0 10px;
+  border: 1px solid #2169D9;
 }
 
 /* INSIDE A CARD */
