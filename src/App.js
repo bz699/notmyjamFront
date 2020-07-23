@@ -19,7 +19,7 @@ function App() {
         <Route path="/signin" component={Signin} />
         <Route exact path="/" component={Cards} />
         {/* Créer un signup */}
-        <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute path="/myprofile" component={Profile} />
       </Switch>
 
     </div>

@@ -23,7 +23,7 @@ const Signin = (props) => {
     })
     .then((response) => response.data)
     .then((data) => localStorage.setItem('token', data.token))
-    .then(() => props.history.push('/profile'))
+    .then(() => props.history.push('/myprofile'))
     .catch();
 	};
 

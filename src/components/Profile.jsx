@@ -6,6 +6,9 @@ const Profile = () => {
 
   const [profile, setProfile] = useState();
 
+  const currentUserId = localStorage.getItem("currentUserId")
+  
+
 
   return (
     <div>

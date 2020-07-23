@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <Nav className='navMenu'>
       <Nav.Link as={Link} className='navLink' to={'/'}>Home</Nav.Link>
-      <Nav.Link as={Link} className='navLink' to={'/profile'}>My Profile</Nav.Link>
+      <Nav.Link as={Link} className='navLink' to={'/myprofile'}>My Profile</Nav.Link>
       <Nav.Link className='navLink' href="#about">About</Nav.Link>
     </Nav>
   );
