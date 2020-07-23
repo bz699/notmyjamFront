@@ -15,6 +15,7 @@
 
 
 /* commun stuffs */
+
 .flex {
   display: flex;
 }
@@ -31,4 +32,26 @@
 
 .wrap {
   flex-wrap: wrap;
+}
+
+.textalign {
+  text-align: center;
+  margin: 0 0 40px 0;
+}
+
+/* SIGNIN / SIGNUP */
+
+.signForm {
+  width: 400px;
+  margin: 40px 0;
+  padding: 40px;
+  border: 1px solid #FBCB0B;
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
 }

@@ -15,8 +15,8 @@ function App() {
     <div className='contain'>
       <Header />
       <Switch>
+        <Route path="/signin" component={Signin} />
         <Route exact path="/" component={Cards} />
-        <Route path='signin' component={Signin} />
         {/* Créer un signup */}
         <Route path="/profile" component={Profile} />
       </Switch>
