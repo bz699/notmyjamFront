@@ -8,6 +8,7 @@ import './App.css';
 import Cards from './components/Cards';
 import Profile from './components/Profile';
 import Header from './components/Header';
+import Signin from './components/Signin';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Cards} />
+        <Route path='signin' component={Signin} />
+        {/* Créer un signup */}
         <Route path="/profile" component={Profile} />
       </Switch>
 
