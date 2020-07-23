@@ -22,8 +22,6 @@ const Cards = () => {
 		getUsersData();
 	}, []);
 
-	console.log(users);
-
 	return (
 		<>
 			<div className="wrapper wrap">
