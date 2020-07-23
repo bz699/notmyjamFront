@@ -18,9 +18,13 @@ const getUserData = () => {
     },
   })
   .then((response) => response.data)
-  .then((data) => localStorage.setItem('currentUserID', data.userID))
+  .then((data) => localStorage.setItem('currentUserId', data.userId))
   .then(setHasAccess(true))
-  .catch((error) => history.push("/signin"));
+  .catch((error) => {
+    localStorage.clear()
+    history.push("/signin")
+  });
+  
 }
 
 	useEffect(() => {
