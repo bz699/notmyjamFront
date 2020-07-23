@@ -8,7 +8,7 @@ const Header = () => {
 	return (
 		<div className="header flexrow">
 			<div className="logo flewrow">
-				<p>NO MY JAM</p>
+				<p>NOT MY JAM</p>
 			</div>
 			<div className="menu flexrow">
 					<Navbar />

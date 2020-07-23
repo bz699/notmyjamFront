@@ -1,20 +1,23 @@
 import React from 'react';
+import {Switch, Route} from 'react-router-dom';
 
-// import boostrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 
-import Header from './components/Header';
-import MyCard from './components/MyCard';
 import Cards from './components/Cards';
+import Profile from './components/Profile';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className='contain'>
       <Header />
-      <MyCard />
-      <Cards />
+      <Switch>
+        <Route exact path="/" component={Cards} />
+        <Route path="/profile" component={Profile} />
+      </Switch>
+
     </div>
   );
 }

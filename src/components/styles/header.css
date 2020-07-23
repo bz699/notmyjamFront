@@ -4,6 +4,7 @@
   background-color: #FBCB0B;
   position: sticky;
   top:0;
+  z-index: 1;
 }
 
 .logo {

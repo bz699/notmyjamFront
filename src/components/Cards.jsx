@@ -20,16 +20,16 @@ const Cards = () => {
 	// fill table with shops data
 	useEffect(() => {
 		getUsersData();
-  }, []);
-  
-  console.log(users)
+	}, []);
+
+	console.log(users);
 
 	return (
-		<div className="wrapper wrap">
-        {users && users.map((user) => 
-          <Card user= { user } />
-        )}
-		</div>
+		<>
+			<div className="wrapper wrap">
+				{users && users.map((user) => <Card user={user} />)}
+			</div>
+		</>
 	);
 };
 
