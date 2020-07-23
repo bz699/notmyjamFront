@@ -29,7 +29,7 @@ const Card = (user) => {
 
     return (
 
-      <div className="card">
+      <div className="cardSmall">
         <div className='myDetails'>
             <div className='cardTitle flexColumn'>
               <div className='userName'>{user.user.name}</div>

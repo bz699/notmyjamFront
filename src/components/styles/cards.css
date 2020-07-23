@@ -1,9 +1,10 @@
 /* CARDS FORMAT */
-.card {
+.cardSmall {
   width: 200px;
   height: 200px;
   margin: 10px;
   border : 1px solid #FBCB0B;
+  border-radius: 10px;
 }
 
 .myCard {
