@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
-import axios from "axios";
+import Axios from "axios";
 
 function App({ path, component }) {
   const history = useHistory();
@@ -8,18 +8,23 @@ function App({ path, component }) {
   // If authentification is false, to prevent flashes
   const [hasAccess, setHasAccess] = useState(false);
 
-  console.log(hasAccess)
+
+const getUserData = () => {
+  Axios({
+    method: "post",
+    url: `http://localhost:8000/api/users/checkToken`,
+    headers: {
+      Authorization: "Bearer " + localStorage.getItem("token"),
+    },
+  })
+  .then((response) => response.data)
+  .then((data) => localStorage.setItem('currentUserID', data.userID))
+  .then(setHasAccess(true))
+  .catch((error) => history.push("/signin"));
+}
 
 	useEffect(() => {
-		axios({
-			method: "post",
-			url: `http://localhost:8000/api/users/checkToken`,
-			headers: {
-				Authorization: "Bearer " + localStorage.getItem("token"),
-			},
-    })
-    .then(setHasAccess(true))
-    .catch((error) => history.push("/signin"));
+    getUserData();
 	}, []);
 
   if(hasAccess) {

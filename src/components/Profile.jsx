@@ -6,9 +6,6 @@ const Profile = () => {
 
   const [profile, setProfile] = useState();
 
-  useEffect(() => {
-    setProfile(JSON.parse(localStorage.getItem("profile")));
-  }, []);
 
   return (
     <div>

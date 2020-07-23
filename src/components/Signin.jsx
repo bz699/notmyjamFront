@@ -13,7 +13,6 @@ const Signin = (props) => {
 
 	const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(signin)
 		Axios({
 			method: "post",
 			url: "http://localhost:8000/api/users/auth",
@@ -23,7 +22,7 @@ const Signin = (props) => {
 			}),
     })
     .then((response) => response.data)
-		.then((data) => localStorage.setItem('token', data.token))
+    .then((data) => localStorage.setItem('token', data.token))
     .then(() => props.history.push('/profile'))
     .catch();
 	};
