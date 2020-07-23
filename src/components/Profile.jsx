@@ -7,10 +7,8 @@ const Profile = () => {
   const [profile, setProfile] = useState();
 
   useEffect(() => {
-    setProfile(JSON.parse(localStorage.getItem("signin")));
+    setProfile(JSON.parse(localStorage.getItem("profile")));
   }, []);
-
-  console.log(profile)
 
   return (
     <div>

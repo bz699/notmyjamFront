@@ -13,6 +13,7 @@ const Signin = (props) => {
 
 	const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(signin)
 		Axios({
 			method: "post",
 			url: "http://localhost:8000/api/users/auth",
