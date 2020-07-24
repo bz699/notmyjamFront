@@ -6,6 +6,8 @@ import "./styles/cards.css";
 
 import Card from "./Card";
 
+import './styles/cards.css'
+
 const Cards = () => {
 	const [users, setUsers] = useState();
 
@@ -24,8 +26,10 @@ const Cards = () => {
 
 	return (
 		<>
-			<div className="wrapper wrap">
+			<div className="wrapper">
+				<div className="cardsContainer wrap">
 				{users && users.map((user) => <Card user={user} />)}
+				</div>
 			</div>
 		</>
 	);

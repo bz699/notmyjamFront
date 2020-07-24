@@ -1,3 +1,14 @@
+/* CONTAINER */
+
+.cardsContainer {
+  margin-top: 50px;
+  width: 900px;
+  display: flex;
+  justify-content: center;
+
+}
+
+
 /* CARDS FORMAT */
 .cardSmall {
   width: 200px;
