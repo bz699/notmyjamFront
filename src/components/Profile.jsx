@@ -203,9 +203,6 @@ const Profile = () => {
 									placeholder={profile.email}
 								/>
 							</Form.Group>
-							<Button variant="modify" type="submit">
-								modifer
-							</Button>
 						</div>
 					</Form>
 				</div>
