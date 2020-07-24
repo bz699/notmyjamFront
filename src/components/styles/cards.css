@@ -12,7 +12,7 @@
 /* CARDS FORMAT */
 .cardSmall {
   width: 200px;
-  height: 200px;
+  height: 250px;
   margin: 10px;
   border : 1px solid #FBCB0B;
   border-radius: 10px;
@@ -37,8 +37,19 @@
 }
 
 .myDetails {
-  width: 600px;
-  margin: 0 10px;
+  width: 200px;
+  margin: 5px 10px;
+}
+
+.foodDetails {
+  width: 200px;
+  margin: 5px 10px;
+}
+
+.hot {
+  color: #ED6C72;
+  border-bottom: 1px solid #ED6C72;
+  width: 150px;
 }
 
 .btn-send {
@@ -63,8 +74,20 @@
 }
 
 .userName {
-  height: 30px;
-  color: #ED6C72;
+  width: 170px;
+  height: 25px;
+  background-color: #FBCB0B;
+  border-radius: 10px;
+  color: #FFFFFF;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.userName p {
+  font-weight: bold;
 }
 
 .userDiet {
