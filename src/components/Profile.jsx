@@ -67,27 +67,46 @@ const Profile = () => {
 		getFoodList();
 	}, []);
 
-	// get food name
+	// get foods list
 	const [foods, setFoods] = useState([]);
-
+	
 	const getFoodData = () => {
 		const url = `http://localhost:8000/api/foods`;
 		Axios.get(url)
-			.then((response) => response.data)
-			.then((data) => setFoods(data));
+		.then((response) => response.data)
+		.then((data) => setFoods(data));
 	};
-
+	
 	useEffect(() => {
 		getFoodData();
 	}, []);
 
+	
+	// set last food inserted
+	const [lastFood, setLastFood] = useState();
+	
+		const getLastFood = () => {
+		const last = [...foods].pop();
+		return setLastFood(last.id);
+	}
+
+	console.log("lastFood",lastFood);
+
+
+
+	// get food name
 	const getFoodName = (foodId) => {
 		const foundFood = foods.find((food) => food.id === foodId);
 		return foundFood ? foundFood.item : "-_o";
 	};
 
-	// Add Food
+	// Add a new Food
 	const [newFood, setNewFood] = useState({ item: "" });
+	const [userFood, setUserFood] = useState({
+		user_id: currentUserId,
+		food_id: null,
+		allergy: 0,
+	})
 
 	const handleChangeNewFood = (event) => {
 		const { name, value } = event.target;
@@ -97,8 +116,15 @@ const Profile = () => {
 	const addFood = () => {
 		const url = `http://localhost:8000/api/foods`;
 		Axios.post(url, newFood)
-			.then((response) => (response.data))
+			 .then(setUserFood)
 	};
+
+	// add the new food to the uiser
+
+	const updateUserFoodList = () => {
+		const url = `http://localhost:8000/api/foods`;
+		Axios.post(url)
+	}
 
 	// Delete Food
 	const deleteFood = (id) => {
@@ -107,8 +133,6 @@ const Profile = () => {
 			.then((response) => response.data)
 			.finally(() => getFoodList());
 	};
-
-	console.log(newFood);
 
 	return (
 		<div>
@@ -184,6 +208,7 @@ const Profile = () => {
 					</Form.Group>
 					<Form
 						onSubmit={(event) => {
+							getLastFood();
 							addFood(newFood);
 						}}
 					>
