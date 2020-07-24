@@ -18,11 +18,11 @@ const Signup = () => {
 
 	const createUser= () => {
     Axios
-      .post("http://localhost:3000/api/users", {
+      .post("http://localhost:8000/api/users", {
         email: email,
         password: password
       })
-      .then((res) => history.push("/signin"));
+      .then(history.push("/signin"));
   };
 
 	console.log(inputs)

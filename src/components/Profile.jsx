@@ -10,7 +10,8 @@ const Profile = () => {
 
 	const currentUserId = localStorage.getItem("currentUserId");
 
-	// get Current User datas
+	// CURRENT USER DATAS
+	// get current user datas
 	const getCurrentUserData = () => {
 		const url = `http://localhost:8000/api/users/${currentUserId}`;
 		Axios.get(url)
@@ -22,9 +23,8 @@ const Profile = () => {
 		getCurrentUserData();
 	}, []);
 
-	// modify Current User datas
-
-	const handleTextChange = (event) => {
+	// MODIFY CURRENT USER DATAS
+	const handleChangeProfile = (event) => {
 		const { name, value } = event.target;
 		setProfile({ ...profile, [name]: value });
 	};
@@ -53,7 +53,7 @@ const Profile = () => {
 		setProfile({ ...profile, [name]: value });
 	};
 
-	// GET FOOD
+	// GET FOODS DATAS
 	const [foodList, setFoodList] = useState([]);
 
 	const getFoodList = () => {
@@ -86,20 +86,21 @@ const Profile = () => {
 		return foundFood ? foundFood.item : "-_o";
 	};
 
-	// Add/Delete Food
-	const [newFood, setNewFood] = useState();
+	// Add Food
+	const [newFood, setNewFood] = useState({ item: "" });
+
+	const handleChangeNewFood = (event) => {
+		const { name, value } = event.target;
+		setNewFood({ ...newFood, [name]: value });
+	};
 
 	const addFood = () => {
 		const url = `http://localhost:8000/api/foods`;
-		Axios.post(url)
-			.then((response) => response.data)
-			.then((data) => setNewFood.id);
+		Axios.post(url, newFood)
+			.then((response) => (response.data))
 	};
 
-	const addUser_Food = () => {
-		const url = `http://localhost:8000/api/users/${currentUserId}/foods/${newFood.id}`;
-	};
-
+	// Delete Food
 	const deleteFood = (id) => {
 		const url = `http://localhost:8000/api/users/foodList/${id}`;
 		Axios.delete(url)
@@ -107,79 +108,85 @@ const Profile = () => {
 			.finally(() => getFoodList());
 	};
 
-	console.log(profile);
+	console.log(newFood);
 
-	if (profile) {
-		return (
-			<div>
-				<div className="wrapper flexColumn">
+	return (
+		<div>
+			<div className="wrapper flexColumn">
+				<Form
+					onSubmit={() => {
+						updateUser();
+					}}
+				>
+					<div className="myActions flexrow">
+						<Button variant="send">envoyer</Button>
+					</div>
+
+					{/* //////// DIET details ////////// */}
+					<div className="myCardForm">
+						<Form.Row>
+							<Form.Group as={Col}>
+								<Form.Control
+									type="text"
+									name="name"
+									value={profile.name}
+									onChange={handleChangeProfile}
+									placeholder={profile.name}
+								/>
+							</Form.Group>
+							<Form.Group as={Col}>
+								<Form.Control
+									as="select"
+									name="diet_id"
+									value={profile.diet_id}
+									onChange={handleChangeDiet}
+								>
+									<option value="choose">Choisir...</option>
+									{diets.map((diet) => (
+										<option value={diet.id}>{diet.name}</option>
+									))}
+								</Form.Control>
+							</Form.Group>
+						</Form.Row>
+						<Button variant="modify" type="submit">
+							modifer
+						</Button>
+					</div>
+				</Form>
+
+				{/* //////// FOOD Details ////////// */}
+				<div className="myCardForm">
+					<Form.Group>
+						<Table>
+							<thead>
+								<tr>Je n'aime pas ça</tr>
+							</thead>
+							<tbody>
+								{foodList.map((food) => (
+									<tr>
+										<td>
+											<Form.Control
+												type="text"
+												name={food.food_id}
+												value={getFoodName(food.food_id)}
+											/>
+										</td>
+										<td></td>
+										<td>
+											<Button onClick={() => deleteFood(food.user_food_id)}>
+												Supprimer
+											</Button>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</Table>
+					</Form.Group>
 					<Form
-						onSubmit={() => {
-							updateUser();
+						onSubmit={(event) => {
+							addFood(newFood);
 						}}
 					>
-						<div className="myActions flexrow">
-							<Button variant="send">envoyer</Button>
-						</div>
-
-						<div className="myCardForm">
-							<Form.Row>
-								<Form.Group as={Col}>
-									<Form.Control
-										type="text"
-										name="name"
-										value={profile.name}
-										onChange={handleTextChange}
-										placeholder={profile.name}
-									/>
-								</Form.Group>
-								<Form.Group as={Col}>
-									<Form.Control
-										as="select"
-										name="diet_id"
-										value={profile.diet_id}
-										onChange={handleChangeDiet}
-									>
-										<option value="choose">Choisir...</option>
-										{diets.map((diet) => (
-											<option value={diet.id}>{diet.name}</option>
-										))}
-									</Form.Control>
-								</Form.Group>
-							</Form.Row>
-							<Button variant="modify" type="submit">
-								modifer
-							</Button>
-						</div>
-					</Form>
-
-					<div className="myCardForm">
-						<Form.Group>
-							<Table>
-								<thead>
-									<tr>Je n'aime pas</tr>
-								</thead>
-								<tbody>
-									{foodList.map((food) => (
-										<tr>
-											<td>
-												<Form.Control
-													type="text"
-													name={food.food_id}
-													value={getFoodName(food.food_id)}
-												/>
-											</td>
-											<td></td>
-											<td>
-												<Button onClick={() => deleteFood(food.user_food_id)}>
-													Supprimer
-												</Button>
-											</td>
-										</tr>
-									))}
-								</tbody>
-							</Table>
-						</Form.Group>
 						<Form.Group>
 							<Table>
 								<thead>
@@ -189,46 +196,51 @@ const Profile = () => {
 									<tr>
 										<td>
 											<Form.Control
-												type=""
-												name=""
-												value=""
-												onChange=""
-												placeholder="ajouter un aliment"
+												type="text"
+												name="item"
+												value={newFood.item}
+												onChange={handleChangeNewFood}
+												placeholder="entrer un aliment"
 											/>
 										</td>
 										<td></td>
 										<td>
-											<Button variant='success'>ajouter</Button>
+											<Button
+												variant="success"
+												type="submit"
+												>
+												ajouter
+											</Button>
 										</td>
 									</tr>
 								</tbody>
 							</Table>
 						</Form.Group>
-					</div>
-
-					<Form
-						onSubmit={() => {
-							updateUser();
-						}}
-					>
-						<div className="myCardForm">
-							<Form.Group>
-								<Form.Label>Email</Form.Label>
-								<Form.Control
-									type="text"
-									name="name"
-									value={profile.email}
-									onChange=""
-									placeholder={profile.email}
-								/>
-							</Form.Group>
-						</div>
 					</Form>
 				</div>
+
+				{/* //////// USER details ////////// */}
+				<Form
+					onSubmit={() => {
+						updateUser();
+					}}
+				>
+					<div className="myCardForm">
+						<Form.Group>
+							<Form.Label>Email</Form.Label>
+							<Form.Control
+								type="text"
+								name="name"
+								value={profile.email}
+								onChange=""
+								placeholder={profile.email}
+							/>
+						</Form.Group>
+					</div>
+				</Form>
 			</div>
-		);
-	}
-	return null;
+		</div>
+	);
 };
 
 export default Profile;
