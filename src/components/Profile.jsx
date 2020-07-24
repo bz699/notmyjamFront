@@ -101,7 +101,6 @@ const Profile = () => {
 	};
 
 	const deleteFood = (id) => {
-		console.log("BLABALfoodId ", id);
 		const url = `http://localhost:8000/api/users/foodList/${id}`;
 		Axios.delete(url)
 			.then((response) => response.data)
@@ -158,7 +157,7 @@ const Profile = () => {
 						<Form.Group>
 							<Table>
 								<thead>
-										<tr>Je n'aime pas</tr>
+									<tr>Je n'aime pas</tr>
 								</thead>
 								<tbody>
 									{foodList.map((food) => (
@@ -170,7 +169,7 @@ const Profile = () => {
 													value={getFoodName(food.food_id)}
 												/>
 											</td>
-											<td>allergy</td>
+											<td></td>
 											<td>
 												<Button onClick={() => deleteFood(food.user_food_id)}>
 													Supprimer
@@ -182,15 +181,35 @@ const Profile = () => {
 							</Table>
 						</Form.Group>
 						<Form.Group>
-							<Form.Label> </Form.Label>
-							<Form.Control type="" name="" value="" onChange="" />
+							<Table>
+								<thead>
+									<tr>Ajouter un aliment à ma liste</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<Form.Control
+												type=""
+												name=""
+												value=""
+												onChange=""
+												placeholder="ajouter un aliment"
+											/>
+										</td>
+										<td></td>
+										<td>
+											<Button variant='success'>ajouter</Button>
+										</td>
+									</tr>
+								</tbody>
+							</Table>
 						</Form.Group>
 					</div>
 
 					<Form
-					onSubmit={() => {
-						updateUser();
-					}}
+						onSubmit={() => {
+							updateUser();
+						}}
 					>
 						<div className="myCardForm">
 							<Form.Group>
