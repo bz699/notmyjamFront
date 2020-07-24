@@ -57,11 +57,9 @@ const Card = (user) => {
 
     const getFoodName = (foodId) => {
       const foundFood = foods.find((food) => food.id === foodId);
-      return foundFood ? foundFood.item : 'o_o';
+      return foundFood ? foundFood.item : '-_o';
     };
 
-
-console.log(foodList)
 
     return (
 
