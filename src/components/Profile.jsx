@@ -90,17 +90,15 @@ const Profile = () => {
 	const [newFood, setNewFood] = useState();
 
 	const addFood = () => {
-		const url = `http://localhost:8000/api/foods`
+		const url = `http://localhost:8000/api/foods`;
 		Axios.post(url)
-		.then((response) => response.data)
-		.then((data) => setNewFood.id)
-	}
-
+			.then((response) => response.data)
+			.then((data) => setNewFood.id);
+	};
 
 	const addUser_Food = () => {
-		const url = `http://localhost:8000/api/users/${currentUserId}/foods/${newFood.id}`
-
-		}
+		const url = `http://localhost:8000/api/users/${currentUserId}/foods/${newFood.id}`;
+	};
 
 	const deleteFood = (id) => {
 		console.log("BLABALfoodId ", id);
@@ -110,7 +108,7 @@ const Profile = () => {
 			.finally(() => getFoodList());
 	};
 
-	console.log(foodList)
+	console.log(profile);
 
 	if (profile) {
 		return (
@@ -125,7 +123,7 @@ const Profile = () => {
 							<Button variant="send">envoyer</Button>
 						</div>
 
-						<div className="myCardForm flexrow">
+						<div className="myCardForm">
 							<Form.Row>
 								<Form.Group as={Col}>
 									<Form.Control
@@ -150,15 +148,18 @@ const Profile = () => {
 									</Form.Control>
 								</Form.Group>
 							</Form.Row>
-						<Button variant="modify" type="submit">
-							modifer
-						</Button>
+							<Button variant="modify" type="submit">
+								modifer
+							</Button>
 						</div>
 					</Form>
 
-					<div className="myCardForm flexrow">
+					<div className="myCardForm">
 						<Form.Group>
 							<Table>
+								<thead>
+										<tr>Je n'aime pas</tr>
+								</thead>
 								<tbody>
 									{foodList.map((food) => (
 										<tr>
@@ -167,35 +168,46 @@ const Profile = () => {
 													type="text"
 													name={food.food_id}
 													value={getFoodName(food.food_id)}
-												 />
+												/>
 											</td>
 											<td>allergy</td>
 											<td>
-												<Button
-													onClick={() => deleteFood(food.user_food_id)}>Supprimer</Button>
+												<Button onClick={() => deleteFood(food.user_food_id)}>
+													Supprimer
+												</Button>
 											</td>
 										</tr>
 									))}
 								</tbody>
 							</Table>
 						</Form.Group>
-						  <Form.Group>
-								<Form.Label> </Form.Label>
-								<Form.Control
-									type=""
-									name=""
-									value=""
-									onChange=""
-								/>
-							</Form.Group>
+						<Form.Group>
+							<Form.Label> </Form.Label>
+							<Form.Control type="" name="" value="" onChange="" />
+						</Form.Group>
 					</div>
 
-					<div className="myCardForm">
-						<div className="foodDetails">User Details</div>
-					</div>
-					<div className="myCardForm">
-						<div className="myCollection">MyCollection</div>
-					</div>
+					<Form
+					onSubmit={() => {
+						updateUser();
+					}}
+					>
+						<div className="myCardForm">
+							<Form.Group>
+								<Form.Label>Email</Form.Label>
+								<Form.Control
+									type="text"
+									name="name"
+									value={profile.email}
+									onChange=""
+									placeholder={profile.email}
+								/>
+							</Form.Group>
+							<Button variant="modify" type="submit">
+								modifer
+							</Button>
+						</div>
+					</Form>
 				</div>
 			</div>
 		);
