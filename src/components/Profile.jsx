@@ -81,33 +81,16 @@ const Profile = () => {
 		getFoodData();
 	}, []);
 
-	
-	// set last food inserted
-	const [lastFood, setLastFood] = useState();
-	
-		const getLastFood = () => {
-		const last = [...foods].pop();
-		return setLastFood(last.id);
-	}
-
-	console.log("lastFood",lastFood);
-
-
-
 	// get food name
 	const getFoodName = (foodId) => {
 		const foundFood = foods.find((food) => food.id === foodId);
 		return foundFood ? foundFood.item : "-_o";
 	};
 
-	// Add a new Food
+	// User adding a new food to their list
+	//add new food
 	const [newFood, setNewFood] = useState({ item: "" });
-	const [userFood, setUserFood] = useState({
-		user_id: currentUserId,
-		food_id: null,
-		allergy: 0,
-	})
-
+	
 	const handleChangeNewFood = (event) => {
 		const { name, value } = event.target;
 		setNewFood({ ...newFood, [name]: value });
@@ -116,23 +99,46 @@ const Profile = () => {
 	const addFood = () => {
 		const url = `http://localhost:8000/api/foods`;
 		Axios.post(url, newFood)
-			 .then(setUserFood)
+		.then(setUserFood)
 	};
+	
+	//get id of last food inserted in database before new food
+	const [lastFood, setLastFood] = useState();
 
-	// add the new food to the uiser
-
-	const updateUserFoodList = () => {
-		const url = `http://localhost:8000/api/foods`;
-		Axios.post(url)
+	const getLastFoodId = () => {
+		const last = [...foods].pop();
+			return setLastFood(last);
 	}
 
-	// Delete Food
+	useEffect(() => {
+		getLastFoodId();
+	});
+
+	console.log(foods)
+	console.log(lastFood)
+
+
+	// add new food to this user
+	const [userFood, setUserFood] = useState({
+		user_id: currentUserId,
+		food_id: 0,
+		allergy: 0,
+	})
+
+/* 	const updateUserFoodList = () => {
+		const url = `http://localhost:8000/api/users/${currentUserId}/foods/${idNewFood}`;
+		Axios.post(url)
+	} */
+
+	// delete food from user
 	const deleteFood = (id) => {
 		const url = `http://localhost:8000/api/users/foodList/${id}`;
 		Axios.delete(url)
 			.then((response) => response.data)
 			.finally(() => getFoodList());
 	};
+
+	// delete food
 
 	return (
 		<div>
@@ -208,7 +214,7 @@ const Profile = () => {
 					</Form.Group>
 					<Form
 						onSubmit={(event) => {
-							getLastFood();
+							getLastFoodId();
 							addFood(newFood);
 						}}
 					>
